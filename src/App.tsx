@@ -1,26 +1,46 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navbar from './components/headers/Navbar/Navbar'
+import Banner from './components/headers/Banner/Banner'
+import Bar from './components/headers/bar/Bar'
+import Footer from './components/footer/Footer/Footer'
 
-function App() {
+
+import Home from './pages/Home/Home'
+import Berita from "./pages/berita_muslim/Berita";
+import Baitul from './pages/baitul/baitulPage';
+import Mstyle from './pages/M_style/Mstyle';
+import Mullaf from './pages/Muallaf/Mullaf';
+import Love from './pages/Love/Love';
+import Halal from './pages/Halal/Halal';
+import ClipVideo from './pages/Clip_Video/Clip_Video';
+import Portfolio from './pages/Portfolio/Portfolio';
+
+
+type Props = {}
+
+const App = (props: Props) => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Banner />
+      <Bar />
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route path="/home" element={<Home />} />
+          <Route path="/berita" element={<Berita />} />
+          <Route path="/baitul" element={<Baitul />} />
+          <Route path="/mstyle" element={<Mstyle />} />
+          <Route path="/muallaf" element={<Mullaf />} />
+          <Route path="/love" element={<Love />} />
+          <Route path="/halal" element={<Halal />} />
+          <Route path="/clipvideo" element={<ClipVideo />} />
+          <Route path="/portfolio" element={<Portfolio />} />
+        </Routes>
+      </Router>
+      
+    </>
   );
 }
 
-export default App;
+export default App

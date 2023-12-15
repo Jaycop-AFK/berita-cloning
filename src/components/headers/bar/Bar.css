@@ -1,0 +1,27 @@
+.wrapper{
+    width: "100%";
+    height: auto;
+    background-color: #135525;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    color: #fff;
+    font-size: 15px;
+}
+
+.One{
+    
+    display: flex;
+    
+}
+
+.Two{
+    
+    display: flex;
+}
+
+.box{
+    width: auto;
+    height: 30px;
+    margin: 20px;
+}
