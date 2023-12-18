@@ -1,6 +1,7 @@
 import React from "react";
 // import BaiTul from ''
 import "../M_style/mstyle.css";
+import MstyleCom from "../../components/headers/headBar/MstyleCom";
 
 
 type Props = {};
@@ -8,8 +9,7 @@ type Props = {};
 const Mstyle = (props: Props) => {
   return (
     <div>
-      <div className="header">Mstyle</div>
-      <div className="main">Heeee</div>
+      <MstyleCom />
     </div>
   );
 };

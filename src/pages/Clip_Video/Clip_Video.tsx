@@ -7,6 +7,8 @@ import Typography from "@mui/material/Typography";
 import { FiClock } from "react-icons/fi";
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
+import Clip_VideoCom from "../../components/headers/headBar/Clip_VideoCom";
+
 
 type ClipData = {
   clip: string;
@@ -29,7 +31,7 @@ const Halal: React.FC = () => {
   return (
     <div>
       <div className="header">
-        
+        <Clip_VideoCom />
       </div>
 
       <Container maxWidth="lg">

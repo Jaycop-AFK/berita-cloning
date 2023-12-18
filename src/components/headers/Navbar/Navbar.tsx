@@ -1,13 +1,26 @@
 import React, { useState, useRef } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import "./Navbar.css";
-import { Link } from 'react-router-dom'
-type Props = {};
+import { Link } from "react-router-dom";
 
-const Navbar = (props: Props) => {
-  const pages = [
+type Page = {
+  title: string;
+  path: string;
+  dropdownItems?: { title: string; path: string }[];
+};
+
+const Navbar: React.FC = () => {
+  const pages: Page[] = [
     { title: "Home", path: "/home" },
-    { title: "Berita Muslim", path: "/berita" },
+    {
+      title: "Berita Muslim",
+      path: "/berita",
+      dropdownItems: [
+        { title: "Category 1", path: "/category1" },
+        { title: "Category 2", path: "/category2" },
+        { title: "Category 3", path: "/category3" },
+      ],
+    },
     { title: "Baitul", path: "/baitul" },
     { title: "M Style", path: "/mstyle" },
     { title: "Muallaf", path: "/muallaf" },
@@ -17,19 +30,22 @@ const Navbar = (props: Props) => {
     { title: "Portfolio", path: "/portfolio" },
   ];
 
-  const navRef = useRef<HTMLElement | null>(null);
+  const navRef = useRef<HTMLDivElement>(null);
 
-  const [activePage, setActivePage] = useState(pages[0]);
-  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [activePage, setActivePage] = useState<Page>(pages[0]);
 
-  const showNavbar = () => {
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
     if (navRef.current) {
       navRef.current.classList.toggle("responsive_nav");
     }
   };
 
-  const toggleDropdown = () => {
-    setDropdownOpen(!dropdownOpen);
+  const toggleDropdown = (page: Page) => {
+    if (page.title === "Berita Muslim") {
+      setActivePage(page);
+    }
   };
 
   return (
@@ -46,24 +62,27 @@ const Navbar = (props: Props) => {
               <Link
                 to={page.path}
                 className={page.title === "Berita Muslim" ? "nav-dropdown" : ""}
+                onClick={() => toggleDropdown(page)}
               >
                 {page.title}
               </Link>
-              {page.title === "Berita Muslim" && dropdownOpen && (
-                <div className="dropdown-content">
-                  {/* Replace anchor tags with Link */}
-                  <Link to="/category1">Category 1</Link>
-                  <Link to="/category2">Category 2</Link>
-                  <Link to="/category3">Category 3</Link>
-                </div>
-              )}
+              {page.title === "Berita Muslim" &&
+                activePage.title === "Berita Muslim" && (
+                  <div className="dropdown-content">
+                    {page.dropdownItems?.map((item, idx) => (
+                      <Link key={idx} to={item.path}>
+                        {item.title}
+                      </Link>
+                    ))}
+                  </div>
+                )}
             </div>
           ))}
-          <button className="nav-btn nav-close-btn" onClick={showNavbar}>
+          <button className="nav-btn nav-close-btn" onClick={toggleMenu}>
             <FaTimes />
           </button>
         </nav>
-        <button className="nav-btn" onClick={showNavbar}>
+        <button className="nav-btn" onClick={toggleMenu}>
           <FaBars />
         </button>
       </header>

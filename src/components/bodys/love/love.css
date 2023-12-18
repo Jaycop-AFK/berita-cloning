@@ -1,3 +1,8 @@
+*{
+    color: #000;
+}
+
+
 .header{
     font-family: 'Athiti', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
     background-color: #171717;
@@ -22,48 +27,29 @@
 .main{
     display: flex;
     flex-wrap: wrap;
-    /* background-color: antiquewhite; */
+    
     width: 100%;
-    color: #fff;
+    color: #020202;
     justify-content: center;
     align-items: center;
-    
-   
-    
 }
 
 
 .BoxLove {
     width: 100%;
-    max-width: 100%; /* กำหนดให้รูปภาพขยายตามความกว้างเต็มที่ */
-    height: auto; /* อนุญาตให้ความสูงปรับตามความกว้าง */
+    max-width: 100%; 
+    height: auto; 
     color: #171717;
     
     margin: 20px;
   }
   @media screen and (min-width: 1500px) {
-    /* ปรับขนาดรูปภาพสำหรับหน้าจอที่กว้างขึ้นกว่า 768px */
+    
     .BoxLove {
-      max-width: 500px; /* กำหนดขนาดสูงสุดเมื่อหน้าจอใหญ่ขึ้น */
+      max-width: 500px; 
     }
   }
 
-.BoxLove p {
-    font-size: 20px;
-}
-
-
-.otherLove{
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.sec{
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.more{
-    display: flex;
-    flex-wrap: wrap;
+.container-love{
+    margin: 1 10;
 }

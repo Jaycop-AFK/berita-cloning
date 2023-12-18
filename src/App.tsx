@@ -1,4 +1,5 @@
 import React from 'react'
+import './App.css'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from './components/headers/Navbar/Navbar'
 import Banner from './components/headers/Banner/Banner'
@@ -27,6 +28,7 @@ const App = (props: Props) => {
       <Router>
         <Navbar />
         <Routes>
+          <Route index element={<Home />} />
           <Route path="/home" element={<Home />} />
           <Route path="/berita" element={<Berita />} />
           <Route path="/baitul" element={<Baitul />} />
@@ -38,7 +40,6 @@ const App = (props: Props) => {
           <Route path="/portfolio" element={<Portfolio />} />
         </Routes>
       </Router>
-      
     </>
   );
 }

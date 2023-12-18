@@ -9,9 +9,11 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { FiClock } from "react-icons/fi";
+import MullafCom from "../../components/headers/headBar/MullafCom";
 
 
-type Props = {};
+type Props = { 
+};
 
 
 const button = {
@@ -23,8 +25,8 @@ const button = {
 const Mullaf = (props: Props) => {
   return (
     <div>
-      <div className="header">Mullaf</div>
-
+      
+        <MullafCom />
       <div
         className="main"
         style={{

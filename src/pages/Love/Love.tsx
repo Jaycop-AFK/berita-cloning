@@ -5,9 +5,9 @@ import "../Love/love.css";
 import Container from "@mui/material/Container";
 import  Pagination  from '@mui/material/Pagination'
 
-import Main from '../../components/bodys/love/main'
-import Seccond from '../../components/bodys/love/Second'
-import More from '../../components/bodys/love/More'
+import LoveComponent from '../../components/bodys/love/Love'
+import LoveCom from "../../components/headers/headBar/LoveCom";
+
 
 type Props = {};
 
@@ -17,7 +17,7 @@ const Love = (props: Props) => {
   return (
     <div>
       <div className="header">
-        <h1>Berita Muslim</h1>
+        <h1>Love</h1>
         <p>
           ขอต้อนรับพี่น้องมุสลิมทุกท่านสู่ช่อง "BERITA MUSLIM"
           สาระความรู้ดีๆในศาสนาอิสลามที่นำมาฝากทั้งมุสลิมีนและมุสลิมะห์
@@ -28,12 +28,11 @@ const Love = (props: Props) => {
       </div>
 
       <Container maxWidth="lg" className="container">
-        <div className="boxlove">
-          <Main />
-          <Seccond />
-        </div>
-        <More />
+        
+          <LoveComponent />
+          
       </Container>
+     
     </div>
   );
 };
