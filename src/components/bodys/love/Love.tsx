@@ -1,24 +1,30 @@
 import React, { useState } from "react";
 import "./love.css";
 
+import { Grid, Paper, Typography } from "@mui/material";
 import Container from "@mui/material/Container";
-import Typography from "@mui/material/Typography";
+
 import { FiClock } from "react-icons/fi";
-import Grid from "@mui/material/Grid";
+
 import { more } from "../../../data/Love";
 import usePagination from "../../../hooks/pagination";
 import { Pagination } from "@mui/material";
 type Props = {};
 
-const LoveComponents = (props: Props) => {
-  
+type LoveItem = {
+  img: string;
+  title: string;
+  detail: string;
+  date: string;
+};
+
+const LoveComponents: React.FC<Props> = (props: Props) => {
   const itemsPerPage = 13;
 
   const { currentPage, currentItems, handlePageChange } = usePagination(
     more,
     itemsPerPage
   );
-
 
   return (
     <div className="main">

@@ -5,7 +5,7 @@ type Props = {}
 const baitul = (props: Props) => {
   return (
     <div className="header">
-      <h1>Love</h1>
+      <h1>Baitul</h1>
       <p>
         ขอต้อนรับพี่น้องมุสลิมทุกท่านสู่ช่อง "BERITA MUSLIM"
         สาระความรู้ดีๆในศาสนาอิสลามที่นำมาฝากทั้งมุสลิมีนและมุสลิมะห์

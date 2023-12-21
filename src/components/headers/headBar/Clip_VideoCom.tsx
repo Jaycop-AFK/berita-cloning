@@ -5,7 +5,7 @@ type Props = {}
 const Clip_VideoCom = (props: Props) => {
   return (
     <div className="header">
-      <h1>Love</h1>
+      <h1>Clipvideo</h1>
       <p>
         ขอต้อนรับพี่น้องมุสลิมทุกท่านสู่ช่อง "BERITA MUSLIM"
         สาระความรู้ดีๆในศาสนาอิสลามที่นำมาฝากทั้งมุสลิมีนและมุสลิมะห์

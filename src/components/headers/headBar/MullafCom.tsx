@@ -1,11 +1,12 @@
 import React from 'react'
+import Muallaf from './../../bodys/home/Menu/menucontent/Muallaf';
 
 type Props = {}
 
 const MullafCom = (props: Props) => {
   return (
     <div className="header">
-      <h1>Love</h1>
+      <h1>Muallaf</h1>
       <p>
         ขอต้อนรับพี่น้องมุสลิมทุกท่านสู่ช่อง "BERITA MUSLIM"
         สาระความรู้ดีๆในศาสนาอิสลามที่นำมาฝากทั้งมุสลิมีนและมุสลิมะห์

@@ -8,6 +8,7 @@ import Typography from "@mui/material/Typography";
 import { FiClock } from "react-icons/fi";
 import { LoveData } from "../data/Love";
 import Pagination from "@mui/material/Pagination";
+import { Link } from "react-router-dom";
 
 type Props = {};
 
@@ -44,9 +45,11 @@ const Love = (props: Props) => {
             <p style={{ textAlign: "start" }}>รวมข่าวสารมุสลิมที่น่าสนใจ</p>
           </Grid>
           <Grid item xs={6}>
-            <Button style={{ backgroundColor: "green", color: "#fff" }}>
-              อ่านบทความทั้งหมด
-            </Button>
+            <Link to="/love">
+              <Button style={{ backgroundColor: "green", color: "#fff" }}>
+                อ่านบทความทั้งหมด
+              </Button>
+            </Link>
           </Grid>
         </Grid>
         <Grid item xs={12} style={{ textAlign: "center" }}>

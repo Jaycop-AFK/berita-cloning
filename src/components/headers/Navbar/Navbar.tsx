@@ -1,7 +1,13 @@
-import React, { useState, useRef } from "react";
-import { FaBars, FaTimes } from "react-icons/fa";
-import "./Navbar.css";
+
+
+import React, { useEffect, useState } from "react";
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import NavDropdown from "react-bootstrap/NavDropdown";
 import { Link } from "react-router-dom";
+
+import {Button, Input} from '@mui/material'
 
 type Page = {
   title: string;
@@ -9,16 +15,42 @@ type Page = {
   dropdownItems?: { title: string; path: string }[];
 };
 
-const Navbar: React.FC = () => {
+function NavBar() {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  const handleScroll = () => {
+    const scrollPosition = window.scrollY;
+    const isTop = scrollPosition < 100; 
+    setIsScrolled(!isTop);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   const pages: Page[] = [
     { title: "Home", path: "/home" },
     {
       title: "Berita Muslim",
       path: "/berita",
       dropdownItems: [
-        { title: "Category 1", path: "/category1" },
-        { title: "Category 2", path: "/category2" },
-        { title: "Category 3", path: "/category3" },
+        { title: "art", path: "/art" },
+        { title: "bussiness", path: "/bussiness" },
+        { title: "coverstory", path: "/coverstory" },
+        { title: "doa", path: "/doa" },
+        { title: "finace", path: "/finace" },
+        { title: "food", path: "/food" },
+        { title: "history", path: "/history" },
+        { title: "life", path: "/life" },
+        { title: "magazine", path: "/magazine" },
+        { title: "news", path: "/news" },
+        { title: "quran", path: "/quran" },
+        { title: "resturant", path: "/resturant" },
+        { title: "slowlife", path: "/slowlife" },
+        { title: "travel", path: "/travel" },
       ],
     },
     { title: "Baitul", path: "/baitul" },
@@ -30,64 +62,71 @@ const Navbar: React.FC = () => {
     { title: "Portfolio", path: "/portfolio" },
   ];
 
-  const navRef = useRef<HTMLDivElement>(null);
-
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [activePage, setActivePage] = useState<Page>(pages[0]);
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-    if (navRef.current) {
-      navRef.current.classList.toggle("responsive_nav");
-    }
-  };
-
-  const toggleDropdown = (page: Page) => {
-    if (page.title === "Berita Muslim") {
-      setActivePage(page);
-    }
+  const navLinkStyle = {
+    marginRight: "10px",
   };
 
   return (
-    <div>
-      <header>
-        <img
-          style={{ width: 65 }}
-          src="https://sp-ao.shortpixel.ai/client/to_webp,q_lossy,ret_img/https://beritamuslimmag.com/wp-content/themes/berita/assets/images/logo.png"
-          alt=""
-        />
-        <nav ref={navRef}>
-          {pages.map((page, index) => (
-            <div key={index} className="nav-item">
-              <Link
-                to={page.path}
-                className={page.title === "Berita Muslim" ? "nav-dropdown" : ""}
-                onClick={() => toggleDropdown(page)}
-              >
-                {page.title}
-              </Link>
-              {page.title === "Berita Muslim" &&
-                activePage.title === "Berita Muslim" && (
-                  <div className="dropdown-content">
-                    {page.dropdownItems?.map((item, idx) => (
-                      <Link key={idx} to={item.path}>
+    <Navbar
+      expand="lg"
+      className={`bg-body-tertiary ${isScrolled ? "fixed-top" : ""}`}
+    >
+      <Container>
+        <Navbar.Brand as={Link} to="/home">
+          <img
+            style={{ width: 65 }}
+            src="https://sp-ao.shortpixel.ai/client/to_webp,q_lossy,ret_img/https://beritamuslimmag.com/wp-content/themes/berita/assets/images/logo.png"
+            alt=""
+          />
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="me-auto">
+            {pages.map((page, index) => {
+              if (page.dropdownItems) {
+                return (
+                  <NavDropdown
+                    key={index}
+                    title={page.title}
+                    id={`nav-dropdown-${index}`}
+                  >
+                    {page.dropdownItems.map((item, itemIndex) => (
+                      <NavDropdown.Item
+                        key={itemIndex}
+                        as={Link}
+                        to={item.path}
+                      >
                         {item.title}
-                      </Link>
+                      </NavDropdown.Item>
                     ))}
-                  </div>
-                )}
-            </div>
-          ))}
-          <button className="nav-btn nav-close-btn" onClick={toggleMenu}>
-            <FaTimes />
-          </button>
-        </nav>
-        <button className="nav-btn" onClick={toggleMenu}>
-          <FaBars />
-        </button>
-      </header>
-    </div>
-  );
-};
+                  </NavDropdown>
+                );
+              } else {
+                return (
+                  <Nav.Link
+                    key={index}
+                    as={Link}
+                    to={page.path}
+                    style={navLinkStyle}
+                  >
+                    {page.title}
+                  </Nav.Link>
+                );
+              }
+            })}
+            <div className="search">
+              <Input
+                placeholder="Search..."
+                style={{ backgroundColor: "#fff" }}
+              />
 
-export default Navbar;
+              <Button>Search</Button>
+            </div>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
+  );
+}
+
+export default NavBar;

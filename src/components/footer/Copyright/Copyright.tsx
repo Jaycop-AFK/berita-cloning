@@ -4,7 +4,7 @@ type Props = {}
 
 const Copyright = (props: Props) => {
   return (
-    <div>© Copyright 2016. All Rights Reserved.</div>
+    <div style={{backgroundColor:'black', color:'#fff', width:'100%', textAlign:'center'}}>© Copyright 2016. All Rights Reserved.</div>
   )
 }
 

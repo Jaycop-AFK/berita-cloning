@@ -8,6 +8,7 @@ import Typography from "@mui/material/Typography";
 import { FiClock } from "react-icons/fi";
 import { LifeData } from "../data/Life";
 import Pagination from "@mui/material/Pagination";
+import { Link } from "react-router-dom";
 
 type Props = {};
 
@@ -30,7 +31,7 @@ const Life = (props: Props) => {
     <Container>
       <Grid container spacing={2} justifyContent="center" alignItems="center">
         <Grid item xs={12}>
-          <h2 style={{ textAlign: "start" }}>News</h2>
+          <h2 style={{ textAlign: "start" }}>LIFE</h2>
         </Grid>
         <Grid
           container
@@ -44,9 +45,11 @@ const Life = (props: Props) => {
             <p style={{ textAlign: "start" }}>รวมข่าวสารมุสลิมที่น่าสนใจ</p>
           </Grid>
           <Grid item xs={6}>
-            <Button style={{ backgroundColor: "green", color: "#fff" }}>
-              อ่านบทความทั้งหมด
-            </Button>
+            <Link to="/life">
+              <Button style={{ backgroundColor: "green", color: "#fff" }}>
+                อ่านบทความทั้งหมด
+              </Button>
+            </Link>
           </Grid>
         </Grid>
         <Grid item xs={12} style={{ textAlign: "center" }}>
